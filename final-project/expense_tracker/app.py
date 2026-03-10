@@ -77,6 +77,78 @@ def show_expenses(expenses):
     total = sum_total(expenses)
     print(f"Kopā: {total:.2f} EUR ({len(expenses)} ieraksti)")
 
+def show_category_summary(expenses):
+    totals = sum_by_category(expenses)
+
+    if not totals:
+        print("Nav izdevumu.")
+        return
+
+    print("\nKopsavilkums pa kategorijām:")
+    print("-" * 30)
+
+    total = 0
+
+    for cat, amount in totals.items():
+        print(f"{cat:<20} {amount:>8.2f} EUR")
+        total += amount
+
+    print("-" * 30)
+    print(f"KOPĀ: {total:.2f} EUR")
+
+def filter_expenses_by_month(expenses):
+    months = get_available_months(expenses)
+
+    if not months:
+        print("Nav izdevumu.")
+        return
+
+    print("\nPieejamie mēneši:")
+    for i, m in enumerate(months, 1):
+        print(f"{i}) {m}")
+
+    try:
+        choice = int(input("Izvēlies mēnesi: "))
+        selected = months[choice - 1]
+    except:
+        print("Nepareiza izvēle.")
+        return
+
+    year, month = map(int, selected.split("-"))
+    filtered = filter_by_month(expenses, year, month)
+
+    print(f"\n{selected} izdevumi:")
+    show_expenses(filtered)
+
+def delete_expense(expenses):
+    if not expenses:
+        print("Nav izdevumu.")
+        return
+
+    print("\nIzdevumi:")
+
+    for i, exp in enumerate(expenses, 1):
+        print(
+            f"{i}) {exp['date']} | {exp['amount']:.2f} EUR | "
+            f"{exp['category']} | {exp['description']}"
+        )
+
+    try:
+        choice = int(input("\nKuru dzēst? (0 lai atceltu): "))
+
+        if choice == 0:
+            return
+
+        removed = expenses.pop(choice - 1)
+        save_expenses(expenses)
+
+        print(
+            f"✓ Dzēsts: {removed['date']} | {removed['amount']:.2f} EUR | "
+            f"{removed['category']} | {removed['description']}"
+        )
+
+    except:
+        print("Nepareiza izvēle.")
 
 def main():
     expenses = load_expenses()
@@ -93,6 +165,15 @@ def main():
         elif choice == "7":
             print("Uz redzēšanos!")
             break
+
+        elif choice == "3":
+            filter_expenses_by_month(expenses)
+
+        elif choice == "4":
+            show_category_summary(expenses)
+
+        elif choice == "5":
+            delete_expense(expenses)
 
         else:
             print("Nepareiza izvēle.")
