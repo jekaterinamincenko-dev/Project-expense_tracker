@@ -1,6 +1,6 @@
 from datetime import date
 from storage import load_expenses, save_expenses
-from logic import sum_total
+from logic import sum_total, filter_by_month, sum_by_category, get_available_months
 
 CATEGORIES = [
     "Ēdiens",
@@ -16,10 +16,12 @@ CATEGORIES = [
 def show_menu():
     print("\n1) Pievienot izdevumu")
     print("2) Parādīt izdevumus")
+    print("3) Filtrēt pēc mēneša")
+    print("4) Kopsavilkums pa kategorijām")
+    print("5) Dzēst izdevumu")
     print("7) Iziet")
 
     return input("\nIzvēlies darbību: ")
-
 
 def add_expense(expenses):
     today = date.today().strftime("%Y-%m-%d")
