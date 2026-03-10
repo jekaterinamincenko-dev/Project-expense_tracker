@@ -1,20 +1,44 @@
 [
   {
-    "date": "Transports",
-    "amount": 40.0,
-    "category": "Transports",
-    "description": "Auto noma"
+    "date": "2025-01-08",
+    "amount": 18.0,
+    "category": "Veselība",
+    "description": "Analīzes"
   },
   {
-    "date": "Piens",
-    "amount": 1.5,
+    "date": "2025-12-25",
+    "amount": 25.0,
+    "category": "Iepirkšanās",
+    "description": "Televizora piegāde"
+  },
+  {
+    "date": "2025-12-29",
+    "amount": 8.5,
     "category": "Ēdiens",
-    "description": "Pārtikas iegāde"
+    "description": "Torte"
   },
   {
-    "date": "Rēķins",
-    "amount": 60.5,
-    "category": "Komunālie maksājumi",
-    "description": "Rēķins par apkuri"
+    "date": "2026-01-17",
+    "amount": 18.0,
+    "category": "Veselība",
+    "description": "Analīzes"
+  },
+  {
+    "date": "2026-01-22",
+    "amount": 15.8,
+    "category": "Izklaide",
+    "description": "Bowlings"
+  },
+  {
+    "date": "2026-02-22",
+    "amount": 49.0,
+    "category": "Iepirkšanās",
+    "description": "Apģerbs"
+  },
+  {
+    "date": "2026-03-08",
+    "amount": 20.0,
+    "category": "Iepirkšanās",
+    "description": "Ziedi"
   }
 ]
