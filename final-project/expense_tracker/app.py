@@ -1,6 +1,7 @@
 from datetime import date
 from storage import load_expenses, save_expenses
 from logic import sum_total, filter_by_month, sum_by_category, get_available_months
+from export import export_to_csv
 
 CATEGORIES = [
     "Ēdiens",
@@ -19,6 +20,7 @@ def show_menu():
     print("3) Filtrēt pēc mēneša")
     print("4) Kopsavilkums pa kategorijām")
     print("5) Dzēst izdevumu")
+    print("6) Eksportēt CSV")
     print("7) Iziet")
 
     return input("\nIzvēlies darbību: ")
@@ -150,6 +152,20 @@ def delete_expense(expenses):
     except:
         print("Nepareiza izvēle.")
 
+def export_csv(expenses):
+    if not expenses:
+        print("Nav izdevumu eksportēšanai.")
+        return
+
+    filename = input("Faila nosaukums [izdevumi.csv]: ")
+
+    if filename == "":
+        filename = "izdevumi.csv"
+
+    export_to_csv(expenses, filename)
+
+    print(f"✓ Eksportēts: {len(expenses)} ieraksti -> {filename}")
+
 def main():
     expenses = load_expenses()
 
@@ -174,6 +190,9 @@ def main():
 
         elif choice == "5":
             delete_expense(expenses)
+
+        elif choice == "6":
+            export_csv(expenses)
 
         else:
             print("Nepareiza izvēle.")

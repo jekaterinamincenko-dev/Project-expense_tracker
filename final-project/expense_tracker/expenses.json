@@ -40,5 +40,11 @@
     "amount": 20.0,
     "category": "Iepirkšanās",
     "description": "Ziedi"
+  },
+  {
+    "date": "2026-03-11",
+    "amount": 50.0,
+    "category": "Izklaide",
+    "description": "Peldbaseins"
   }
 ]
